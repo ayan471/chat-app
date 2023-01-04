@@ -7,19 +7,23 @@
       }
     },
     "rooms": {
-      ".read": "auth !==null",
-      ".write": "auth !==null",
+      ".read": "auth !== null",
+      ".indexOn": "lastMessage/author/uid",
       "$room_id": {
-        ".read": "auth !==null",
-        ".write": "auth !==null"
+        ".read": "auth !== null",
+        ".write": "auth !== null",
+        "lastMessage": {
+          ".write": "auth !== null"
+        }
       }
     },
     "messages": {
-      ".read": "auth !==null",
-      ".write": "auth !==null",
+      ".read": "auth !== null",
+      ".write": "auth !== null",
+      ".indexOn": ["roomId", "author/uid"],
       "$message_id": {
-        ".read": "auth !==null",
-        ".write": "auth !==null"
+        ".read": "auth !== null",
+        ".write": "auth !== null"
       }
     },
     ".read": false,
