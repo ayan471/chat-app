@@ -26,6 +26,13 @@
         ".write": "auth !== null"
       }
     },
+    "status": {
+      ".indexOn": ["roomId", "author/uid"],
+      "$user_id": {
+        ".read": "$user_id === auth.uid",
+        ".write": "$user_id === auth.uid"
+      }
+    },
     ".read": false,
     ".write": false
   }
