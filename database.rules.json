@@ -11,7 +11,7 @@
       ".indexOn": "lastMessage/author/uid",
       "$room_id": {
         ".read": "auth !== null",
-        ".write": "auth !== null",
+        ".write": "!data.exists() || data.child('admins').child(auth.uid).val() == true",
         "lastMessage": {
           ".write": "auth !== null"
         }
