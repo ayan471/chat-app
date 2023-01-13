@@ -1,6 +1,3 @@
-/* eslint-disable object-curly-spacing */
-/* eslint-disable quotes */
-/* eslint-disable no-unused-vars */
 const functions = require('firebase-functions');
 
 const admin = require('firebase-admin');

@@ -1,12 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable indent */
-/* eslint-disable require-jsdoc */
-/* eslint-disable linebreak-style */
-/* eslint-disable no-unused-vars */
-/* eslint-disable linebreak-style */
-/* eslint-disable quotes */
-/* eslint-disable comma-spacing */
-// eslint-disable-next-line quotes
 const functions = require('firebase-functions');
 
 const admin = require('firebase-admin');
