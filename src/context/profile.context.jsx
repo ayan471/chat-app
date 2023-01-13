@@ -59,7 +59,9 @@ export const ProfileProvider = ({ children }) => {
           try {
             const currentToken = await messaging.getToken();
             if (currentToken) {
-              await database.ref(`/fcm_token/${currentToken}`).set(authObj.uid);
+              await database
+                .ref(`/fcm_tokens/${currentToken}`)
+                .set(authObj.uid);
             }
           } catch (err) {
             console.log('An error occured while retrieving token.', err);
@@ -70,7 +72,9 @@ export const ProfileProvider = ({ children }) => {
           try {
             const currentToken = await messaging.getToken();
             if (currentToken) {
-              await database.ref(`/fcm_token/${currentToken}`).set(authObj.uid);
+              await database
+                .ref(`/fcm_tokens/${currentToken}`)
+                .set(authObj.uid);
             }
           } catch (err) {
             console.log('An error occured while retrieving token.', err);
