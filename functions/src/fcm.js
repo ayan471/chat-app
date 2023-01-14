@@ -13,7 +13,7 @@ exports.sendFcm = functions.https.onCall(async (data, context) => {
   if (!roomSnap.exists()) {
     return false;
   }
-  const roomData = roomData.val();
+  const roomData = roomSnap.val();
   checkIfAllowed(context, transformToArr(roomData.admins));
   const fcmUsers = transformToArr(roomData.fcmUsers);
   const userTokensPromises = fcmUsers.map(uid => getUserTokens(uid));
@@ -30,7 +30,7 @@ exports.sendFcm = functions.https.onCall(async (data, context) => {
       title: `${title} (${roomData.name})`,
       body: message,
     },
-    tokens: registrationTokens,
+    tokens,
   };
   const batchResponse = await messaging.sendMulticast(fcmMessage);
   const failedTokens = [];
@@ -38,7 +38,7 @@ exports.sendFcm = functions.https.onCall(async (data, context) => {
   if (batchResponse.failureCount > 0) {
     batchResponse.responses.forEach((resp, idx) => {
       if (!resp.success) {
-        failedTokens.push(registrationTokens[idx]);
+        failedTokens.push(tokens[idx]);
       }
     });
   }
