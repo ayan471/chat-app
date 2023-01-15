@@ -3,6 +3,8 @@ import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/storage';
 import 'firebase/messaging';
+import 'firebase/functions';
+import { isLocalhost } from './helper';
 
 const config = {
   apiKey: 'AIzaSyCQyAwWWF22M9uq5NGF7T6VJf3vUF0Efl4',
@@ -21,6 +23,7 @@ const app = firebase.initializeApp(config);
 export const auth = app.auth();
 export const database = app.database();
 export const storage = app.storage();
+export const functions = app.functions('asia-south1');
 
 export const messaging = firebase.messaging.isSupported()
   ? app.messaging()
@@ -33,4 +36,8 @@ if (messaging) {
   messaging.onMessage(data => {
     console.log(data);
   });
+}
+
+if (isLocalhost) {
+  functions.useEmulator('localhost', 5001);
 }
