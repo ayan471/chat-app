@@ -31,7 +31,7 @@ const EditRoomBtnDrawer = () => {
     updateData('description', newDesc);
   };
   return (
-    <div>
+    <>
       <Button className="br-circle" size="sm" color="red" onClick={open}>
         A
       </Button>
@@ -61,7 +61,7 @@ const EditRoomBtnDrawer = () => {
           </Button>
         </Drawer.Footer>
       </Drawer>
-    </div>
+    </>
   );
 };
 

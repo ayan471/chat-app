@@ -6,6 +6,7 @@ import { useMediaQuery } from '../../../misc/custom-hooks';
 import RoomInfoBtnModal from './RoomInfoBtnModal';
 import EditRoomBtnDrawer from './EditRoomBtnDrawer';
 import SendFcmBtnModal from './SendFcmBtnModal';
+import AskFcmBtnModal from './AskFcmBtnModal';
 
 const Top = () => {
   const name = useCurrentRoom(v => v.name);
@@ -29,6 +30,7 @@ const Top = () => {
           <span className="text-disappear">{name}</span>
         </h4>
         <ButtonToolbar className="ws-nowrap">
+          <AskFcmBtnModal />
           {isAdmin && <EditRoomBtnDrawer />}
         </ButtonToolbar>
       </div>
