@@ -8,10 +8,14 @@
     },
     "rooms": {
       ".read": "auth !== null",
-      ".indexOn": "lastMessage/author/uid",
       "$room_id": {
         ".read": "auth !== null",
         ".write": "!data.exists() || data.child('admins').child(auth.uid).val() == true",
+        "fcmUsers": {
+          "$user_id": {
+            ".write": "$user_id === auth.uid"
+          }
+        },
         "lastMessage": {
           ".write": "auth !== null"
         }
@@ -20,7 +24,7 @@
     "messages": {
       ".read": "auth !== null",
       ".write": "auth !== null",
-      ".indexOn": ["roomId", "author/uid"],
+      ".indexOn": "roomId",
       "$message_id": {
         ".read": "auth !== null",
         ".write": "auth !== null"
